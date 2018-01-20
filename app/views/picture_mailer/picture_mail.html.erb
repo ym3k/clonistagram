@@ -1,0 +1,11 @@
+<h1>ピクチャが<%= @action %>されました！</h1>
+
+<% unless @action == "削除" %>
+<p>URL: <%= 
+link_to picture_url(@picture.id), picture_url(@picture.id)
+#link_to picture_url(@picture.id)
+%></p>
+
+<h4>コメント:</h4>
+<p><%= @picture.comment %></p>
+<% end %>

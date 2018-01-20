@@ -1,0 +1,39 @@
+<h1>Sign up</h1>
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this @user from being saved:</h2>
+    <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= form_with(model: @user, local: true) do |f| %>
+  <span class="row">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </span>
+  <span class="row">
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+  </span>
+  <span class="row">
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </span>
+  <span class="row">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+  </span>
+  <span class="row">
+    <%= f.label :avatar %>   ※アバターはあとで編集できます。
+    <%= 
+      f.file_field :avatar, id: :user_avatar
+    %>
+    <%= f.hidden_field :avatar_cache %>
+  </span>
+  <span class="row">
+  <%= f.submit "Create my account" %>
+  </span>
+<% end %>

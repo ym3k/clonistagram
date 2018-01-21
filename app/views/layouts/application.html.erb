@@ -4,41 +4,59 @@
     <title>Clonistagram</title>
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
   </head>
-
+  <% if current_page?(:controller => 'sessions', :action => 'new') %>
+  <body class="login_bg">
+  <% else %>
   <body>
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#gnavi">
-            <span class="sr-only">Bootstrap</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Bootstrap</a>
-        </div>
-        <div id="gnavi" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li><%= link_to 'Pictures', pictures_path %></li>
-            <% if logged_in? %>
-            <li><%= link_to current_user.name, user_path(current_user.id) %></li>
-            <li><%= link_to "Logout", session_path(current_user.id), method: :delete %></li>
-            <% else %>
-            <li><%= link_to "Sign up", new_user_path %></li>
-            <li><%= link_to "Login", new_session_path %></li>
-            <% end %>
-          </ul>
-        </div>
+    <div style="width:100%" class="bg-primary">
+    <nav class="navbar navbar-toggleable-md navbar-inverse bg-primary navbar-ym">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="#">Clonistagram</a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <%= link_to '', new_picture_path, class: "fa fa-camera fa-lg fa-ym-white nav-link" %>
+          </li>
+          <li class="nav-item active">
+            <%= link_to '', pictures_path, class: "fa fa-book fa-lg fa-ym-white nav-link" %>
+          </li>
+        </ul>
+          <% if logged_in? %>
+            <li class="nav-item active">
+              <%= link_to current_user.name, user_path(current_user.id), class: "nav-link" %>
+            </li>
+            <li class="nav-item active">
+              <%= link_to "Logout", session_path(current_user.id), method: :delete, class: "nav-link"%>
+            </li>
+          <% else %>
+            <li class="nav-item active">
+              <%= link_to "Sign up", new_user_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item active">
+            <%= link_to "Login", new_session_path, class: "nav-link" %>
+            </li>
+          <% end %>
+        </ul>
       </div>
     </nav>
+    </div>
+  <% end %>
     <div class="container">
     <%= yield %>
     </div>
-　　<footer class="footer">
+    <% unless current_page?(:controller => 'sessions', :action => 'new') %>
+  　<footer class="footer bg-primary">
         <p>Copyright © 2018 Tomoyuki YAMAZAKI/2017-09 ALL RIGHTS RESERVED</p>
     </footer>
+    <% end %>
   </body>
 </html>

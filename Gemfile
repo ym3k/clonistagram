@@ -56,6 +56,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bcrypt', '3.1.11'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'jquery-rails'
+gem 'bootstrap', '~> 4.0.0.alpha6'
+gem 'font-awesome-sass'
 
 group :development do
   gem 'letter_opener_web'

@@ -2,36 +2,35 @@
 
 <h1>Pictures</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Image</th>
-      <th>Comment</th>
-      <th colspan="1"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @pictures.each do |picture| %>
-      <tr>
-        <td>
-          <% unless picture.image.file.nil? %>
-          <%= image_tag picture.image_url %>
-          <% end %>
-        </td>
-        <td><%= picture.comment %></td>
-        <td>
-          <%= link_to 'Show', picture %>
-          <% if picture.user == current_user %>
-            <%= link_to 'Edit', edit_picture_path(picture) %>
-            <%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="col-md-8" >
+   <!--<div class="card-deck"> -->
+  <% @pictures.each do |picture| %>
+    <div class="card" >
+    <!-- <div class="card" style="width: 20rem;"> -->
+      <% unless picture.image.file.nil? %>
+        <%= image_tag picture.image_url, class: "card-img-top", style: "max-width: 100%" %>
+      <% end %>
+      <div class="card-block">
+        <!-- <h4 class="card-title">Card title</h4> -->
+        <h6 class="card-subtitle mb-2 text-muted" style="display: inline-block">
+          <%= picture.user.name %> 
+        </h6>
+        <h6 class="card-subtitle mb-2 text-muted" style="display: inline-block;padding:0 10px;">
+          <%= picture.created_at %>
+        </h6>
+        <p class="card-text">
+          <%= picture.comment %>
+        </p>
+        <%= link_to 'Show', picture, class: "btn btn-primary" %>
+        <% if picture.user == current_user %>
+          <%= link_to 'Edit', edit_picture_path(picture) , class: "btn btn-primary"%>
+          <%= link_to 'Destroy', picture, method: :delete, 
+              data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+   <!--</div> -->
+</div>
 
 <br>
-
-<%= link_to 'New Picture', new_picture_path %>

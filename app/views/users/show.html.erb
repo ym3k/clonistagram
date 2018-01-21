@@ -1,34 +1,35 @@
-<div class="contents">
-  <h1><%= @user.name %>のページ</h1>
-  <p>メールアドレス: <%= @user.email %></p>
-  
-  <p><%= image_tag @user.avatar_url %></p>
+<div class="col-md-4 side_menu">
+  <div style="float: left;padding-right: 5px;">
+    <p><%= image_tag @user.avatar_url %></p>
+  </div>
+  <h4><%= @user.name %></h4>
+  <p><%= @user.email %></p>
   <p>
     <%= 
     link_to 'アバター編集', edit_user_path(@user)
     %> 
   </p>
-
-  <ul class="row">
-    <li class="col-sm-12 col-md-12">お気に入り一覧</li>
-  </ul>
-  <div class="row">
-    <% @user.favorite_pictures.each do |picture| %>
-      <div class="col-xs-12 col-md-6 picture-panel">
-        <p>
-          <% unless picture.image.file.nil? %>
-          <%= image_tag picture.image_url %>
-          <% end %>
-        </p>
-        <p><%= picture.comment %></p>
-        <div class="picture-links">
-          <%= link_to 'Show', picture, class: 'btn btn-default' %>
-          <% if picture.user == current_user %>
-            <%= link_to 'Edit', edit_picture_path(picture), class: 'btn btn-info' %> |
-            <%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
-  </div>
 </div>
+<p id="notice"><%= notice %></p>
+<h1>Favarites</h1>
+<div class="row">
+  <% @user.favorite_pictures.each do |picture| %>
+    <div class="col-xs-12 col-md-9 picture-panel">
+      <p>
+        <% unless picture.image.file.nil? %>
+        <%= image_tag picture.image_url %>
+        <% end %>
+      </p>
+      <p><%= picture.comment %></p>
+      <div class="row">
+        <%= link_to 'Show', picture, class: 'btn btn-primary' %>
+        <% if picture.user == current_user %>
+          <%= link_to 'Edit', edit_picture_path(picture), class: 'btn btn-info' %> |
+          <%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<br>

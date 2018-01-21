@@ -7,10 +7,9 @@
       <%= 
         #form.hidden_field :image_cache
         form.hidden_field :avatar_cache
-        # ↑ コレじゃだめ?
       %>
   </div>
-  <div class="actions">
+  <div class="actions centerize">
     <%= form.submit 'アバターを更新', class: "btn btn-default" %>
     <%=
       link_to 'アバターを削除', user_path(@user, user: {remove_avatar: 1} ), method: :put,

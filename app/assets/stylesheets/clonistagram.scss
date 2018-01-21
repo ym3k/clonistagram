@@ -1,0 +1,201 @@
+//card-deck
+// .card-columns {
+//   @include media-breakpoint-only(lg) {
+//     column-count: 2;
+//   }
+//   @include media-breakpoint-only(xl) {
+//     column-count: 3;
+//   }
+// }
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  font-family: "Montserrat", "Helvetica", Arial, sans-serif !important;
+  //text-align: center;
+}
+
+// fontawesome用
+.fa-ym-white {
+  color: white;
+}
+
+// ページ共通
+.container {
+  margin-bottom: 60px;
+}
+
+.footer {
+  hight: 60px;
+  //background-color:#f0f0f0;
+  color: white;
+  padding: 20px 0 10px 0;
+  margin: auto;
+  font-size: 14px;
+  position: absolute;
+  bottom: 0;
+  
+  width: 100%;
+  text-align: center;
+}
+
+
+.centerize {
+  text-align: center;
+}
+
+.widthall {
+  width: 100%;
+}
+
+// login 画面
+.login {
+  background-color: white;
+  margin: 0 auto;
+  margin-top: 100px ;
+  height: 400px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  padding: 50px ;
+  .inner {
+    margin: 0 auto;
+    flex-direction: column;
+    width: 50%;
+  }
+}
+
+.login_bg {
+  background-image: url('login_bg.jpg');
+  background-size: cover;
+}
+
+// sign up/edit画面
+.profile {
+  background-color: white;
+  margin: 0 auto;
+  margin-top: 40px ;
+  height: 400px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  padding: 50px ;
+  .inner-edit {
+    margin: 0 auto;
+    flex-direction: column;
+    width: 80%;
+  }
+}
+
+
+// ボタン
+.btn-ym {
+  padding: 5px 30px;
+  margin: 10px auto;
+  text-align: center;
+  border-radius: 8px;          /* CSS3草案 */  
+  -webkit-border-radius: 8px;  /* Safari,Google Chrome用 */  
+  -moz-border-radius: 8px;     /* Mozilla */
+  border: 2px solid;
+}
+
+.btn-ym-default {
+  background-color: #3169d1;
+  border: 2px solid #3169d1;
+  color: #fff;
+  &:hover {
+    background-color: transparent;
+    color: #3169d1;
+    border: 2px solid #3169d1;
+  }
+}
+
+// navbar 
+.navbar-ym {
+  max-width: 1140px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+// side_menu
+.side_menu{
+  float: right;
+  //border: 2px solid lightgray;
+  padding: 50px 20px;  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+}
+
+.side_menu li{
+  background-color: #205990;
+  border-color: #205990;
+  height: 6rem;
+  margin-bottom: 10px;
+}
+
+.side_menu li a{
+  font-size:2rem;
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  padding: 2rem;
+}
+
+.side_menu li:hover{
+    opacity: 0.5;
+}
+
+.side_menu .point {
+  background-color: #67ADDD;
+}
+
+.side_menu .point a{
+  color: #4D4D4D;
+}
+
+// scaffold.sccs から移植
+label {
+  display: block;
+}
+
+div {
+  &.field, &.actions {
+    margin-bottom: 10px;
+  }
+}
+
+#notice {
+  color: green;
+}
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px 7px 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px -7px 0;
+    background-color: #c00;
+    color: #fff;
+  }
+
+  ul li {
+    font-size: 12px;
+    list-style: square;
+  }
+}

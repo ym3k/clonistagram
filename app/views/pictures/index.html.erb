@@ -2,13 +2,13 @@
 
 <h1>Pictures</h1>
 
-<div class="col-md-8" >
-   <!--<div class="card-deck"> -->
+<div class="col-md-12" >
+  <div class="card-columns"> 
   <% @pictures.each do |picture| %>
     <div class="card" >
     <!-- <div class="card" style="width: 20rem;"> -->
       <% unless picture.image.file.nil? %>
-        <%= image_tag picture.image_url, class: "card-img-top", style: "max-width: 100%" %>
+        <%= image_tag picture.image_url, class: "card-img-top img-fluid" %>
       <% end %>
       <div class="card-block">
         <!-- <h4 class="card-title">Card title</h4> -->
@@ -30,7 +30,7 @@
       </div>
     </div>
   <% end %>
-   <!--</div> -->
+  </div> 
 </div>
 
 <br>

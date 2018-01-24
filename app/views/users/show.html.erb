@@ -12,16 +12,23 @@
 </div>
 <p id="notice"><%= notice %></p>
 <h1>Favarites</h1>
-<div class="row">
+<div class="col-md-8">
+  <div class="card-columns"> 
   <% @user.favorite_pictures.each do |picture| %>
-    <div class="col-xs-12 col-md-9 picture-panel">
+    <div class="card">
       <p>
         <% unless picture.image.file.nil? %>
-        <%= image_tag picture.image_url %>
+        <%= image_tag picture.image_url, class: "card-img-top img-fluid" %>
         <% end %>
       </p>
-      <p><%= picture.comment %></p>
-      <div class="row">
+      <div class="card-block">
+        <p class="card-text"><%= picture.comment %></p>
+        <h6 class="card-subtitle mb-2 text-muted" style="display: inline-block">
+          <%= picture.user.name %> 
+        </h6>
+        <h6 class="card-subtitle mb-2 text-muted" style="display: inline-block;padding:0 10px;">
+          <%= picture.created_at %>
+        </h6>
         <%= link_to 'Show', picture, class: 'btn btn-primary' %>
         <% if picture.user == current_user %>
           <%= link_to 'Edit', edit_picture_path(picture), class: 'btn btn-info' %> |
@@ -30,6 +37,7 @@
       </div>
     </div>
   <% end %>
+  </div>
 </div>
 
 <br>

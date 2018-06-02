@@ -20,3 +20,6 @@
 
 .env
 public/uploads/*
+
+Gemfile.lock
+.DS_Store
